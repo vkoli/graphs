@@ -1,9 +1,9 @@
 import java.util.*;
 
-class Graph{
+class DirectedGraph{
   List<Node> vertices;
   
-  public Graph(){
+  public DirectedGraph(){
     this.vertices = new ArrayList();
   }
 
@@ -12,23 +12,19 @@ class Graph{
     vertices.add(node);
   }
 
-  void addUndirectedEdge(Node first, Node second){
+  void addDirectedEdge(Node first, Node second){
     first.neighbors.add(second);
-    second.neighbors.add(first);
   } 
 
-  void removeUndirectedEdge(Node first, Node second){
+  void removeDirectedEdge(Node first, Node second){
     first.neighbors.remove(second);
-    second.neighbors.remove(first);
   } 
 
   HashSet<Node> getAllNodes(){
     HashSet<Node> lst = new HashSet();
-
     for(int i = 0; i < vertices.size(); i++){
       lst.add(vertices.get(i));
     }
-
     return lst;
   }
 }

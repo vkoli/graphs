@@ -1,9 +1,10 @@
 import java.util.*;
 
-class Graph{
+class WeightedGraph{
+
   List<Node> vertices;
   
-  public Graph(){
+  public WeightedGraph(){
     this.vertices = new ArrayList();
   }
 
@@ -12,23 +13,25 @@ class Graph{
     vertices.add(node);
   }
 
-  void addUndirectedEdge(Node first, Node second){
+  void addWeightedEdge(Node first, Node second, int w){
     first.neighbors.add(second);
-    second.neighbors.add(first);
-  } 
+    first.weights.put(second, w);
+  }
 
-  void removeUndirectedEdge(Node first, Node second){
+  void removeDirectedEdge(Node first, Node second){
     first.neighbors.remove(second);
-    second.neighbors.remove(first);
-  } 
+    first.weights.remove(second);
+  }
 
   HashSet<Node> getAllNodes(){
     HashSet<Node> lst = new HashSet();
-
     for(int i = 0; i < vertices.size(); i++){
       lst.add(vertices.get(i));
     }
-
     return lst;
   }
+
 }
+
+
+
